@@ -12,6 +12,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMultiAuth.Web", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D71DAB6-B13C-49D5-9899-564A814A59FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.IdentityServerA", "src\AspNetCoreMultiAuth.IdentityServerA\AspNetCoreMultiAuth.IdentityServerA.csproj", "{3EB64951-8065-4442-AD68-A1CCCCA8569F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.IdentityServerB", "src\AspNetCoreMultiAuth.IdentityServerB\AspNetCoreMultiAuth.IdentityServerB.csproj", "{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,14 @@ Global
 		{55029D14-7BD0-4E51-8E16-50D22A6781F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55029D14-7BD0-4E51-8E16-50D22A6781F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55029D14-7BD0-4E51-8E16-50D22A6781F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EB64951-8065-4442-AD68-A1CCCCA8569F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EB64951-8065-4442-AD68-A1CCCCA8569F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EB64951-8065-4442-AD68-A1CCCCA8569F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EB64951-8065-4442-AD68-A1CCCCA8569F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +55,8 @@ Global
 		{37535AEF-53DA-45EC-93FA-4D415ACD2E01} = {8D71DAB6-B13C-49D5-9899-564A814A59FE}
 		{13F01FFC-DDA5-4A37-A636-719190086A3E} = {8D71DAB6-B13C-49D5-9899-564A814A59FE}
 		{55029D14-7BD0-4E51-8E16-50D22A6781F3} = {8D71DAB6-B13C-49D5-9899-564A814A59FE}
+		{3EB64951-8065-4442-AD68-A1CCCCA8569F} = {8D71DAB6-B13C-49D5-9899-564A814A59FE}
+		{B2F8DDBE-99F3-4578-AC43-941164FA5DFF} = {8D71DAB6-B13C-49D5-9899-564A814A59FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {440E70D0-AF16-4A6C-908D-CAE6B69BDE12}

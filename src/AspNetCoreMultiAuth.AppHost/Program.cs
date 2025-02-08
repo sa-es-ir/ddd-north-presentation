@@ -6,4 +6,9 @@ builder.AddProject<Projects.AspNetCoreMultiAuth_Web>("webfrontend")
     .WithExternalHttpEndpoints()
     .WithReference(apiService);
 
+builder.AddProject<Projects.AspNetCoreMultiAuth_IdentityServerA>("IdentityServerA")
+    .WithEndpoint();
+
+builder.AddProject<Projects.AspNetCoreMultiAuth_IdentityServerB>("IdentityServerB");
+
 builder.Build().Run();
