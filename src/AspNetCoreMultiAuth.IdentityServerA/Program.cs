@@ -42,7 +42,7 @@ app.MapGet("/token", (IConfiguration configuration) =>
     };
 
     var tokenDescriptor = new JwtSecurityToken(
-        issuer: "https://identity-server-a.com",
+        issuer: configuration["jwt-issuer-a"]!,
         audience: Guid.NewGuid().ToString(),
         claims: claims,
         expires: DateTime.UtcNow.AddHours(3),
