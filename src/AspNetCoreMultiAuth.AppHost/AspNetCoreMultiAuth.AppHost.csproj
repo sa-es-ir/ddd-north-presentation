@@ -13,7 +13,6 @@
     <ProjectReference Include="..\AspNetCoreMultiAuth.ApiService\AspNetCoreMultiAuth.ApiService.csproj" />
     <ProjectReference Include="..\AspNetCoreMultiAuth.IdentityServerA\AspNetCoreMultiAuth.IdentityServerA.csproj" />
     <ProjectReference Include="..\AspNetCoreMultiAuth.IdentityServerB\AspNetCoreMultiAuth.IdentityServerB.csproj" />
-    <ProjectReference Include="..\AspNetCoreMultiAuth.Web\AspNetCoreMultiAuth.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
