@@ -24,7 +24,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/token", (IConfiguration configuration) =>
+app.MapGet("/token-server-B", (IConfiguration configuration) =>
 {
     var jwtSecurity = new JwtSecurityTokenHandler();
     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt-key-b"]!));
@@ -32,18 +32,19 @@ app.MapGet("/token", (IConfiguration configuration) =>
 
     var claims = new[]
     {
-        new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString())
+        new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
+        new Claim("role", "Role-B")
     };
 
     var tokenDescriptor = new JwtSecurityToken(
         issuer: configuration["jwt-issuer-b"]!,
-        audience: Guid.NewGuid().ToString(),
+        audience: configuration["audience-b"],
         claims: claims,
         expires: DateTime.UtcNow.AddHours(3),
         signingCredentials: credentials
     );
 
-    return new { AccessToken = jwtSecurity.WriteToken(tokenDescriptor) };
+    return jwtSecurity.WriteToken(tokenDescriptor);
 });
 
 app.Run();

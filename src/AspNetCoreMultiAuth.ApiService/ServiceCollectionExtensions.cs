@@ -21,7 +21,7 @@ public static class ServiceCollectionExtensions
              options.TokenValidationParameters = new TokenValidationParameters
              {
                  ValidIssuer = config["jwt-issuer-a"],
-                 ValidateAudience = false,
+                 ValidAudience = config["audience-a"],
                  ClockSkew = TimeSpan.Zero,
                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-a"]!))
              };
@@ -32,7 +32,7 @@ public static class ServiceCollectionExtensions
              options.TokenValidationParameters = new TokenValidationParameters
              {
                  ValidIssuer = config["jwt-issuer-b"],
-                 ValidateAudience = false,
+                 ValidAudience = config["audience-b"],
                  ClockSkew = TimeSpan.Zero,
                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-b"]!))
              };
@@ -63,7 +63,7 @@ public static class ServiceCollectionExtensions
                     {
                         var tokenIssuer = jwtHandler.ReadJwtToken(token).Issuer;
 
-                        if (tokenIssuer == config.GetValue<string>("IdentitySeverA:Issuer"))
+                        if (tokenIssuer == config["jwt-issuer-a"])
                             return "Scheme_ServerA";
                         else
                             return "Scheme_ServerB";
@@ -77,19 +77,40 @@ public static class ServiceCollectionExtensions
           {
               options.TokenValidationParameters = new TokenValidationParameters
               {
-                  ValidAudience = config.GetValue<string>("IdentitySeverA:Audience"),
-                  ValidIssuer = config.GetValue<string>("IdentitySeverA:Issuer"),
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SomeThingThatShouldNotBeHereA"))
+                  ValidIssuer = config["jwt-issuer-a"],
+                  ValidAudience = config["audience-a"],
+                  ClockSkew = TimeSpan.Zero,
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-a"]!))
+              };
+
+              options.Events = new JwtBearerEvents
+              {
+                  OnAuthenticationFailed = context =>
+                  {
+                      return Task.CompletedTask;
+                  }
               };
           })
+
           //IdentityServerB, the Scheme name is Scheme_ServerB
           .AddJwtBearer("Scheme_ServerB", options =>
           {
               options.TokenValidationParameters = new TokenValidationParameters
               {
-                  ValidAudience = config.GetValue<string>("IdentitySeverB:Audience"),
-                  ValidIssuer = config.GetValue<string>("IdentitySeverB:Issuer"),
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SomeThingThatShouldNotBeHereB"))
+
+                  ValidIssuer = config["jwt-issuer-b"],
+                  ValidAudience = config["audience-b"],
+                  ClockSkew = TimeSpan.Zero,
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-b"]!))
+              };
+
+
+              options.Events = new JwtBearerEvents
+              {
+                  OnAuthenticationFailed = context =>
+                  {
+                      return Task.CompletedTask;
+                  }
               };
           })
           //The scheme name is CustomToken

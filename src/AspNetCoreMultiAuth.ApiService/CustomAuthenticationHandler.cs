@@ -28,7 +28,6 @@ public class CustomAuthenticationHandler : AuthenticationHandler<CustomAuthSchem
             return AuthenticateResult.Fail("invalid token");
 
         var claims = new ClaimsIdentity(nameof(CustomAuthenticationHandler));
-        claims.AddClaim(new Claim("userId", dbToken.UserId));
         // you can more claim based on authorization for example add Roles or Policies
 
         var ticket = new AuthenticationTicket(
