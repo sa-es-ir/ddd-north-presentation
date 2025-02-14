@@ -15,15 +15,17 @@ var apiService = builder.AddProject<Projects.AspNetCoreMultiAuth_ApiService>("ap
     .WithEnvironment("audience-a", audienceA)
     .WithEnvironment("audience-b", audienceB);
 
-builder.AddProject<Projects.AspNetCoreMultiAuth_IdentityServerA>("IdentityServerA")
+builder.AddProject<Projects.AspNetCoreMultiAuth_IdentityServerA>("identityServerA")
     .WithEnvironment("jwt-key-a", jwtKeyA)
     .WithEnvironment("audience-a", audienceA)
     .WithEnvironment("jwt-issuer-a", IdentityServerAIssuer);
 
 
-builder.AddProject<Projects.AspNetCoreMultiAuth_IdentityServerB>("IdentityServerB")
+builder.AddProject<Projects.AspNetCoreMultiAuth_IdentityServerB>("identityServerB")
     .WithEnvironment("jwt-key-b", jwtKeyB)
     .WithEnvironment("audience-b", audienceB)
     .WithEnvironment("jwt-issuer-b", IdentityServerBIssuer);
+
+builder.AddProject<Projects.AspNetCoreMultiAuth_CustomToken>("customtoken");
 
 builder.Build().Run();

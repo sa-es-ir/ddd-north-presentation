@@ -1,0 +1,6 @@
+@AspNetCoreMultiAuth.CustomToken_HostAddress = http://localhost:5188
+
+GET {{AspNetCoreMultiAuth.CustomToken_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
