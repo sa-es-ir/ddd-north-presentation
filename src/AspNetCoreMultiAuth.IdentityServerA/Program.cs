@@ -30,7 +30,7 @@ app.UseHttpsRedirection();
 app.MapGet("/token", (IConfiguration configuration) =>
 {
     var jwtSecurity = new JwtSecurityTokenHandler();
-    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt-key"]!));
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt-key-a"]!));
     var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
     var claims = new[]
@@ -46,7 +46,7 @@ app.MapGet("/token", (IConfiguration configuration) =>
         signingCredentials: credentials
     );
 
-    return jwtSecurity.WriteToken(tokenDescriptor);
+    return new { AccessToken = jwtSecurity.WriteToken(tokenDescriptor) };
 });
 
 app.Run();
