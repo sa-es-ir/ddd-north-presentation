@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         })
-         //IdentityServerA, the Scheme name is JwtBearerDefaults.AuthenticationScheme (Bearer)
+         //AzureB2C, the Scheme name is JwtBearerDefaults.AuthenticationScheme (Bearer)
          .AddJwtBearer(options =>
          {
              options.TokenValidationParameters = new TokenValidationParameters
@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-azure-b2c"]!))
              };
          })
-         //IdentityServerB, the Scheme name is Scheme_ServerB
+         //Okta, the Scheme name is Scheme_ServerB
          .AddJwtBearer("Scheme_Okta", options =>
          {
              options.TokenValidationParameters = new TokenValidationParameters
