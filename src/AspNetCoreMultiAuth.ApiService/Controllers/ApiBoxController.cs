@@ -7,8 +7,8 @@ namespace AspNetCoreMultiAuth.ApiService.Controllers;
 [Route("api")]
 public class ApiBoxController : ControllerBase
 {
-    [HttpGet("server-a")]
-    [Authorize(Roles = "Role-A")]
+    [HttpGet("azure-b2c")]
+    [Authorize(Roles = "role-azure-b2c")]
     public IEnumerable<WeatherForecast> GetServerA()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -20,8 +20,8 @@ public class ApiBoxController : ControllerBase
         .ToArray();
     }
 
-    [HttpGet("server-b")]
-    [Authorize(Roles = "Role-B")]
+    [HttpGet("okta")]
+    [Authorize(Roles = "role-okta")]
     public IEnumerable<WeatherForecast> GetServerB()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast

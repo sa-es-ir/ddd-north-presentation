@@ -20,21 +20,21 @@ public static class ServiceCollectionExtensions
          {
              options.TokenValidationParameters = new TokenValidationParameters
              {
-                 ValidIssuer = config["jwt-issuer-a"],
-                 ValidAudience = config["audience-a"],
+                 ValidIssuer = config["jwt-issuer-azure-b2c"],
+                 ValidAudience = config["audience-azure-b2c"],
                  ClockSkew = TimeSpan.Zero,
-                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-a"]!))
+                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-azure-b2c"]!))
              };
          })
          //IdentityServerB, the Scheme name is Scheme_ServerB
-         .AddJwtBearer("Scheme_ServerB", options =>
+         .AddJwtBearer("Scheme_Okta", options =>
          {
              options.TokenValidationParameters = new TokenValidationParameters
              {
-                 ValidIssuer = config["jwt-issuer-b"],
-                 ValidAudience = config["audience-b"],
+                 ValidIssuer = config["jwt-issuer-okta"],
+                 ValidAudience = config["audience-okta"],
                  ClockSkew = TimeSpan.Zero,
-                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-b"]!))
+                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-okta"]!))
              };
          })
          //The scheme name is CustomToken
@@ -63,24 +63,24 @@ public static class ServiceCollectionExtensions
                     {
                         var tokenIssuer = jwtHandler.ReadJwtToken(token).Issuer;
 
-                        if (tokenIssuer == config["jwt-issuer-a"])
-                            return "Scheme_ServerA";
+                        if (tokenIssuer == config["jwt-issuer-azure-b2c"])
+                            return "Scheme_AzureB2C";
                         else
-                            return "Scheme_ServerB";
+                            return "Scheme_Okta";
                     }
 
                     return "CustomToken";
                 };
             })
           //IdentityServerA, the Scheme name is Scheme_ServerA
-          .AddJwtBearer("Scheme_ServerA", options =>
+          .AddJwtBearer("Scheme_AzureB2C", options =>
           {
               options.TokenValidationParameters = new TokenValidationParameters
               {
-                  ValidIssuer = config["jwt-issuer-a"],
-                  ValidAudience = config["audience-a"],
+                  ValidIssuer = config["jwt-issuer-azure-b2c"],
+                  ValidAudience = config["audience-azure-b2c"],
                   ClockSkew = TimeSpan.Zero,
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-a"]!))
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-azure-b2c"]!))
               };
 
               options.Events = new JwtBearerEvents
@@ -93,15 +93,15 @@ public static class ServiceCollectionExtensions
           })
 
           //IdentityServerB, the Scheme name is Scheme_ServerB
-          .AddJwtBearer("Scheme_ServerB", options =>
+          .AddJwtBearer("Scheme_Okta", options =>
           {
               options.TokenValidationParameters = new TokenValidationParameters
               {
 
-                  ValidIssuer = config["jwt-issuer-b"],
-                  ValidAudience = config["audience-b"],
+                  ValidIssuer = config["jwt-issuer-okta"],
+                  ValidAudience = config["audience-okta"],
                   ClockSkew = TimeSpan.Zero,
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-b"]!))
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-okta"]!))
               };
 
 

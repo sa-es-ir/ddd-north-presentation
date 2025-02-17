@@ -1,6 +1,0 @@
-@AspNetCoreMultiAuth.IdentityServerA_HostAddress = http://localhost:5172
-
-GET {{AspNetCoreMultiAuth.IdentityServerA_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

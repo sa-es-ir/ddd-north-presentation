@@ -10,9 +10,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMultiAuth.ApiServ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D71DAB6-B13C-49D5-9899-564A814A59FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.IdentityServerA", "src\AspNetCoreMultiAuth.IdentityServerA\AspNetCoreMultiAuth.IdentityServerA.csproj", "{3EB64951-8065-4442-AD68-A1CCCCA8569F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.AzureB2C", "src\AspNetCoreMultiAuth.AzureB2C\AspNetCoreMultiAuth.AzureB2C.csproj", "{3EB64951-8065-4442-AD68-A1CCCCA8569F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.IdentityServerB", "src\AspNetCoreMultiAuth.IdentityServerB\AspNetCoreMultiAuth.IdentityServerB.csproj", "{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.Okta", "src\AspNetCoreMultiAuth.Okta\AspNetCoreMultiAuth.Okta.csproj", "{B2F8DDBE-99F3-4578-AC43-941164FA5DFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMultiAuth.CustomToken", "src\AspNetCoreMultiAuth.CustomToken\AspNetCoreMultiAuth.CustomToken.csproj", "{E613DC3D-B1C1-4A4E-AB0F-57BA60551CC3}"
 EndProject
