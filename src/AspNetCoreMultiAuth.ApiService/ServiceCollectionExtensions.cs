@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-azure-b2c"]!))
              };
          })
-         //Okta, the Scheme name is Scheme_ServerB
+         //Okta, the Scheme name is Scheme_Okta
          .AddJwtBearer("Scheme_Okta", options =>
          {
              options.TokenValidationParameters = new TokenValidationParameters
@@ -58,7 +58,7 @@ public static class ServiceCollectionExtensions
                 options.ForwardDefaultSelector = context =>
                 {
                     var jwtHandler = new JwtSecurityTokenHandler();
-                    var token = context.Request.Headers[HeaderNames.Authorization].ToString().GetAccessToken(); ;
+                    var token = context.Request.Headers[HeaderNames.Authorization].ToString().GetAccessToken();
                     if (!string.IsNullOrEmpty(token) && jwtHandler.CanReadToken(token))
                     {
                         var tokenIssuer = jwtHandler.ReadJwtToken(token).Issuer;
@@ -82,14 +82,6 @@ public static class ServiceCollectionExtensions
                   ClockSkew = TimeSpan.Zero,
                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-azure-b2c"]!))
               };
-
-              options.Events = new JwtBearerEvents
-              {
-                  OnAuthenticationFailed = context =>
-                  {
-                      return Task.CompletedTask;
-                  }
-              };
           })
 
           //IdentityServerB, the Scheme name is Scheme_ServerB
@@ -102,15 +94,6 @@ public static class ServiceCollectionExtensions
                   ValidAudience = config["audience-okta"],
                   ClockSkew = TimeSpan.Zero,
                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["jwt-key-okta"]!))
-              };
-
-
-              options.Events = new JwtBearerEvents
-              {
-                  OnAuthenticationFailed = context =>
-                  {
-                      return Task.CompletedTask;
-                  }
               };
           })
           //The scheme name is CustomToken

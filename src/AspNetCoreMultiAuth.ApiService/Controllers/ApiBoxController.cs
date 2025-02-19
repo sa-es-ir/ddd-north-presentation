@@ -9,7 +9,7 @@ public class ApiBoxController : ControllerBase
 {
     [HttpGet("azure-b2c")]
     [Authorize(Roles = "role-azure-b2c")]
-    public IEnumerable<WeatherForecast> GetServerA()
+    public IEnumerable<WeatherForecast> GetByAzureB2C()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
@@ -22,7 +22,7 @@ public class ApiBoxController : ControllerBase
 
     [HttpGet("okta")]
     [Authorize(Roles = "role-okta")]
-    public IEnumerable<WeatherForecast> GetServerB()
+    public IEnumerable<WeatherForecast> GetByOkta()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
@@ -35,7 +35,7 @@ public class ApiBoxController : ControllerBase
 
     [HttpGet("custom")]
     [Authorize]
-    public IEnumerable<WeatherForecast> GetCustomToken()
+    public IEnumerable<WeatherForecast> GetByCustomToken()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
