@@ -72,7 +72,7 @@ public static class ServiceCollectionExtensions
                     return "CustomToken";
                 };
             })
-          //IdentityServerA, the Scheme name is Scheme_ServerA
+          //AzureB2C, the Scheme name is Scheme_AzureB2C
           .AddJwtBearer("Scheme_AzureB2C", options =>
           {
               options.TokenValidationParameters = new TokenValidationParameters
@@ -84,12 +84,11 @@ public static class ServiceCollectionExtensions
               };
           })
 
-          //IdentityServerB, the Scheme name is Scheme_ServerB
+          //Okta, the Scheme name is Scheme_Okta
           .AddJwtBearer("Scheme_Okta", options =>
           {
               options.TokenValidationParameters = new TokenValidationParameters
               {
-
                   ValidIssuer = config["jwt-issuer-okta"],
                   ValidAudience = config["audience-okta"],
                   ClockSkew = TimeSpan.Zero,
